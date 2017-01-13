@@ -43,7 +43,7 @@ body, html {
 .main-slider {
   background-color: #fff;
   height: 755px;
-  h5{
+  h2{
     font-size: 30px;
     font-weight: 700;
     padding-bottom: 40px;
@@ -51,11 +51,9 @@ body, html {
     span{
       font-size: 72px;
       font-weight: 700;
-
     }
   }
   p{
-
     font-size: 13px;
     font-weight: 400;
     padding: 0 15px 58px 0;
@@ -63,14 +61,16 @@ body, html {
   .main-slidersektor {
     float: left;
     width: 380px;
-    padding: 248px 35px 0px 102px;
+    padding: 248px 35px 0 102px;
+    img {
+      padding-top: 75px;
+    }
   }
   button {
     background-color: #ff5959;
     border-radius: 10px;
     border: none;
     color: white;
-
     font-size: 18px;
     font-weight: 700;
     height: 42px;
@@ -78,7 +78,10 @@ body, html {
     margin-left: 15px;
     &:hover {
       background-color: transparent;
-      border: 3px solid #ff5959;
+      border: 2px solid #ff5959;
+    }
+    &:focus {
+      outline: 0;
     }
   }
 }
@@ -92,8 +95,9 @@ body, html {
     text-align: center;
     font-size: 30px;
     padding-top: 47px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 50px;
+    font-weight: 300;
   }
   .services-sektor {
     width: 355px;
@@ -103,7 +107,7 @@ body, html {
     margin-left: 23px;
     font-size: 13px;
     &:last-child {
-      margin-right: 0px;
+      margin-right: 0;
     }
     .title {
       font-size: 24px;
@@ -122,10 +126,11 @@ body, html {
   height: 900px;
   h2 {
     padding-top: 60px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 50px;
     color: #ffffff;
     text-align: center;
+    font-weight: 300;
   }
   ul{
     margin: 0;
@@ -188,8 +193,9 @@ body, html {
     text-align: center;
     font-size: 30px;
     padding-top: 55px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 49px;
+    font-weight: 300;
   }
   .team-sektor {
     width: 270px;
@@ -199,59 +205,62 @@ body, html {
     margin-left: 15px;
     font-size: 13px;
     &:last-child {
-      margin-right: 0px;
+      margin-right: 0;
     }
     .title {
       font-size: 24px;
       margin-top: 5px;
       margin-bottom: -10px;
+      font-weight: bold;
     }
     span {
       font-size: 16px;
+      font-weight: normal;
     }
-    img {
+    .face {
       border-radius: 50%;
       width: 270px;
       height: 270px;
       border: 2px solid #ff5959;
+      background: #ffffff;
     }
   }
-
   ul.social {
     padding: 0;
     font-size: 0;
-
     li {
       display: inline-block;
       width: 24px;
+      position: relative;
       height: 24px;
       margin-right: 5px;
       margin-left: 6px;
       background: url("/images/social.png") no-repeat;
-
       &.twitter {
         background-position: 0 0;
       }
-
       &.pinterest {
         background-position: -35px 0;
       }
-
       &.facebook {
         background-position: -71px 0;
       }
-
       &.googlePlus {
         background-position: -106px 0;
       }
-
       &.linkedIn {
         background-position: -141px 0;
+      }
+      a {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left: 0;
       }
     }
   }
 }
-
 
 .news {
   background: #ff5959;
@@ -263,8 +272,9 @@ body, html {
     text-align: center;
     font-size: 30px;
     padding-top: 47px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 55px;
+    font-weight: 300;
   }
   .news-sektor {
     width: 370px;
@@ -272,30 +282,26 @@ body, html {
     margin-right: 30px;
     font-size: 13px;
     &:last-child {
-      margin-right: 0px;
+      margin-right: 0;
     }
     .title {
       font-size: 18px;
       font-weight: bold;
     }
     p {
-      margin: 0px;
+      margin: 0;
       padding-bottom: 7px;
       padding-top: 10px;
       img {
         padding-right: 15px;
       }
-
     }
-
     a{
       color: white;
       text-decoration: none;
       font-size: 13px;
       margin-right: 35px;
-      &:hover{
-        text-decoration: underline;
-      }
+      cursor: pointer;
       img{
         padding-right: 15px;
       }
@@ -304,8 +310,9 @@ body, html {
 
   #news-slider {
     width: 1170px;
-    height: 505px;
+    height: 520px;
     margin: 50px 15px;
+    margin-bottom: 0;
     overflow: hidden;
     .polosa {
       width: 2375px;
@@ -318,9 +325,12 @@ body, html {
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      margin: 15px 0px;
+      margin: 15px 0;
       border: none;
       cursor: pointer;
+      &:focus {
+        outline: 0;
+      }
     }
     #next {
       background: url("/images/next-arr.png") #ffffff;
@@ -331,9 +341,6 @@ body, html {
       float: left;
     }
   }
-
-
-
 }
 
 .contact {
@@ -343,8 +350,9 @@ body, html {
     text-align: center;
     font-size: 30px;
     padding-top: 55px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 50px;
+    font-weight: normal;
   }
   .contact-form {
     width: 570px;
@@ -358,7 +366,6 @@ body, html {
       margin-bottom: 15px;
       border: none;
       text-indent: 10px;
-
       &:focus {
         outline: 0;
       }
@@ -369,7 +376,6 @@ body, html {
       border-radius: 10px;
       padding: 10px;
       border: none;
-
       &:focus {
         outline: 0;
       }
@@ -382,7 +388,7 @@ body, html {
   }
   .title {
     font-size: 24px;
-    margin: 0px;
+    margin: 0;
     margin-bottom: 15px;
   }
   p {
@@ -397,19 +403,17 @@ body, html {
     img {
       padding-right: 10px;
     }
-
     &.address:after {
       content: "";
-      display: inline-block;
       background: url("/images/arr.png") no-repeat;
       width: 74px;
       height: 51px;
       position: absolute;
       top: 5px;
       margin-left: 5px;
+      display: inline-block;
     }
   }
-
   button {
     width: 170px;
     margin-right: 10px;
@@ -418,16 +422,18 @@ body, html {
     font-size: 18px;
     font-weight: bold;
     border: 2px solid #ff5959;
-    border-radius: 9px;
+    border-radius: 10px;
     color: white;
     background-color: #ff5959;
     &:hover{
       color: #ff5959;
       background-color: white;
     }
+    &:focus {
+      outline: 0;
+    }
   }
 }
-
 
 .footer {
   background: #ff5959;
@@ -436,9 +442,7 @@ body, html {
   text-align: center;
   color: #ffffff;
   font-size: 13px;
-
   p {
     margin: 0;
   }
-
 }

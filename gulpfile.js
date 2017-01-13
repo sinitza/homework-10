@@ -14,7 +14,7 @@ var gulp         = require('gulp'),
 var reload  = browserSync.reload;
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('fonts', 'templates', 'images', 'css', 'scss', 'js', 'scripts');
+    gulp.start('images', 'css', 'scss', 'js', 'scripts');
 });
 
 gulp.task('clean', function () {
@@ -27,9 +27,6 @@ gulp.task('scss', function () {
         .pipe(scss().on('error', scss.logError))
         .on('error', browserifyHandler)
         .pipe(autoprefixer('last 2 versions'))
-        // .pipe(minifyCss({
-        //     keepSpecialComments: 0
-        // }))
         .pipe(sourcemaps.write(''))
         .pipe(gulp.dest('css'))
         .pipe(browserSync.stream())
@@ -66,48 +63,10 @@ function browserifyHandler(err) {
 
 gulp.task('watch', function () {
     var css = gulp.watch('web-src/scss/*.scss', ['scss']),
-        templates = gulp.watch('web-src/templates/*', ['templates']),
         js = gulp.watch('web-src/js/*', ['scripts']);
 });
 
-gulp.task('fonts', function () {
-    return gulp.src([
-        'bower_components/bootstrap/fonts/*',
-        'bower_components/font-awesome/fonts/*',
-        'bower_components/font-awesome/css/*'
-    ])
-        .pipe(gulp.dest('css/fonts/'))
-});
-
-
-gulp.task('templates', function () {
-    return gulp.src([
-        'web-src/templates/*'
-    ])
-        .pipe(gulp.dest('templates/'))
-});
-
-gulp.task('css', function () {
-    return gulp.src([
-        'bower_components/bootstrap/dist/css/bootstrap.min.css',
-        'bower_components/bootstrap/dist/css/bootstrap-theme.min.css'
-    ])
-        .pipe(gulp.dest('css/'))
-});
-
-gulp.task('js', function () {
-    return gulp.src([
-        'bower_components/angular/angular.min.js',
-        'bower_components/jquery/dist/jquery.min.js',
-        'bower_components/bootstrap/dist/js/bootstrap.min.js'
-    ])
-        .pipe(concat('vendor.js'))
-        .pipe(gulp.dest('js/'));
-});
-
-
 gulp.task('serve', function () {
-
     browserSync.init({
         scriptPath: function (path, port, options) {
             return "/browser-sync/browser-sync-client.js";
@@ -122,6 +81,5 @@ gulp.task('serve', function () {
     });
 
     var css = gulp.watch('web-src/less/*.less', ['scss']),
-        templates = gulp.watch('web-src/templates/*', ['templates']),
         js = gulp.watch('web-src/js/*', ['scripts']);
 });
