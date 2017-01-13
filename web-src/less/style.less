@@ -1,3 +1,9 @@
+body, html {
+  padding: 0;
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
 .wrapper {
   width: 1207px;
   margin: 0 auto;
@@ -38,7 +44,6 @@
   background-color: #fff;
   height: 755px;
   h5{
-    font-family: "Droid Sans", sans-serif;
     font-size: 30px;
     font-weight: 700;
     padding-bottom: 40px;
@@ -46,11 +51,11 @@
     span{
       font-size: 72px;
       font-weight: 700;
-      font-family: "Droid Sans", sans-serif;
+
     }
   }
   p{
-    font-family: "Quicksand", sans-serif;
+
     font-size: 13px;
     font-weight: 400;
     padding: 0 15px 58px 0;
@@ -65,7 +70,7 @@
     border-radius: 10px;
     border: none;
     color: white;
-    font-family: "Droid Sans", sans-serif;
+
     font-size: 18px;
     font-weight: 700;
     height: 42px;
@@ -212,31 +217,37 @@
     }
   }
 
-  .social {
-    ul{
-      li {
-        display: block;
-        width: 24px;
-        height: 24px;
-        border: 1px solid red;
-        background: url("/images/social.png") no-repeat;
-        .twitter {
-          background-position: 0px 0px;
-        }
-        .pinterest {
-          background-position: -35px 0px;
-        }
-        .facebook {
-          background-position: -71px 0px;
-        }
-        .googlePlus {
-          background-position: -106px 0px;
-        }
-        .linkedIn {
-          background-position: -141px 0px;
-        }
+  ul.social {
+    padding: 0;
+    font-size: 0;
+
+    li {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+      margin-left: 6px;
+      background: url("/images/social.png") no-repeat;
+
+      &.twitter {
+        background-position: 0 0;
       }
 
+      &.pinterest {
+        background-position: -35px 0;
+      }
+
+      &.facebook {
+        background-position: -71px 0;
+      }
+
+      &.googlePlus {
+        background-position: -106px 0;
+      }
+
+      &.linkedIn {
+        background-position: -141px 0;
+      }
     }
   }
 }
@@ -346,13 +357,22 @@
       border-radius: 10px;
       margin-bottom: 15px;
       border: none;
+      text-indent: 10px;
+
+      &:focus {
+        outline: 0;
+      }
     }
     textarea {
-      width: 568px;
-      height: 170px;
+      width: 548px;
+      height: 150px;
       border-radius: 10px;
+      padding: 10px;
       border: none;
-      padding: 0px;
+
+      &:focus {
+        outline: 0;
+      }
     }
   }
   .contact-sektor {
@@ -368,25 +388,28 @@
   p {
     margin-bottom: 45px;
   }
-  .adress, .phone {
+  .address, .phone {
     display: block;
     font-size: 14px;
     margin: 15px 0;
     font-weight: bold;
+    position: relative;
     img {
       padding-right: 10px;
     }
+
+    &.address:after {
+      content: "";
+      display: inline-block;
+      background: url("/images/arr.png") no-repeat;
+      width: 74px;
+      height: 51px;
+      position: absolute;
+      top: 5px;
+      margin-left: 5px;
+    }
   }
-  .map {
-    content: "";
-    display: inline-block;
-    background: url("/images/arr.png") no-repeat;
-    width: 74px;
-    height: 51px;
-    position: absolute;
-    top: 5px;
-    margin-left: 5px;
-  }
+
   button {
     width: 170px;
     margin-right: 10px;
@@ -409,12 +432,13 @@
 .footer {
   background: #ff5959;
   height: 114px;
+  line-height: 114px;
   text-align: center;
   color: #ffffff;
   font-size: 13px;
+
   p {
-    padding: 50px;
-    margin: 0px;
+    margin: 0;
   }
 
 }
