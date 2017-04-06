@@ -1,7 +1,5 @@
-
 var gulp         = require('gulp'),
     concat       = require('gulp-concat'),
-    uglify       = require('gulp-uglify'),
     autoprefixer = require('gulp-autoprefixer'),
     scss         = require('gulp-sass'),
     minifyCss    = require('gulp-minify-css'),
@@ -9,28 +7,26 @@ var gulp         = require('gulp'),
     imagemin     = require('gulp-imagemin'),
     sourcemaps   = require('gulp-sourcemaps'),
     babel        = require('gulp-babel'),
-    browserSync  = require('browser-sync').create(),
+    browserSync  = require('browser-sync'),
+    less         = require('gulp-less'),
     util         = require('gulp-util');
-var reload  = browserSync.reload;
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('images', 'css', 'scss', 'js', 'scripts');
+    gulp.start('images', 'less', 'scripts', 'browserSync');
 });
 
 gulp.task('clean', function () {
-    del(['scss', 'js/*', 'images']);
+    del(['less', 'js/*', 'images']);
 });
 
-gulp.task('scss', function () {
+gulp.task('less', function () {
     return gulp.src('web-src/less/*.less')
         .pipe(sourcemaps.init(''))
-        .pipe(scss().on('error', scss.logError))
-        .on('error', browserifyHandler)
+        .pipe(less())
         .pipe(autoprefixer('last 2 versions'))
         .pipe(sourcemaps.write(''))
         .pipe(gulp.dest('css'))
-        .pipe(browserSync.stream())
-    ;
+        .pipe(browserSync.stream());
 });
 
 gulp.task('images', function () {
@@ -43,43 +39,25 @@ gulp.task('images', function () {
         .pipe(browserSync.stream());
 });
 
-
 gulp.task('scripts', function() {
-    return gulp.src(['web-src/js/*.js'])
-        .pipe(sourcemaps.init())
-        .pipe(babel())
-        .on('error', browserifyHandler)
-        .pipe(concat('main.js'))
-        .pipe(uglify())
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest('js/'))
-        .pipe(browserSync.stream());
+    return gulp.src('web-src/js/*.js')
+    .pipe(babel())
+        .pipe(gulp.dest('js'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
 
-function browserifyHandler(err) {
-    util.log(util.colors.red('Error: ' + err.message));
-    this.end();
-}
+gulp.task('browserSync', function() {
+    browserSync({
+        server: {
+            baseDir: ''
+        }
+    });
+});
 
 gulp.task('watch', function () {
-    var css = gulp.watch('web-src/scss/*.scss', ['scss']),
-        js = gulp.watch('web-src/js/*', ['scripts']);
-});
-
-gulp.task('serve', function () {
-    browserSync.init({
-        scriptPath: function (path, port, options) {
-            return "/browser-sync/browser-sync-client.js";
-        },
-        socket: {
-            domain: 'localhost:3000'
-        },
-        server: {
-            baseDir: "./"
-        },
-        notify: false
-    });
-
-    var css = gulp.watch('web-src/less/*.less', ['scss']),
-        js = gulp.watch('web-src/js/*', ['scripts']);
+   gulp.watch('web-src/less/*.less', ['less']);
+   gulp.watch('**/*.html', browserSync.reload);
+   gulp.watch('web-src/js/**/*.js', ['babel']);
 });

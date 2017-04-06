@@ -1,11 +1,12 @@
-let slider = document.getElementsByClassName('polosa')[0],
+let slider = document.getElementsByClassName('row')[0],
     sliderItems = slider.children,
     maxItems = sliderItems.length,
     currentItem = sliderItems[0],
-    widthItem = currentItem.clientWidth,
+    widthItem = 370,
     prev = document.getElementById('prev'),
     next = document.getElementById('next'),
     pos = 0;
+
 
 prev.style.display = 'none';
 next.style.display = 'block';
